@@ -8,7 +8,7 @@ import androidx.room.PrimaryKey
 data class TaskAPP(
     @PrimaryKey (autoGenerate = true) //Parte del Primary KEY
     @NonNull                          //Parte del Primary KEY
-    val id: Int,
+    val id: Int =0,
     val task:String,
     val status:Boolean,
     val datatime: String )

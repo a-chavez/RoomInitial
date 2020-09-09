@@ -8,6 +8,7 @@ android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
+
     defaultConfig {
         applicationId "com.example.roominitial"
         minSdkVersion 24
@@ -57,5 +58,16 @@ dependencies {
 
     // optional - Test helpers
     testImplementation "androidx.room:room-testing:$room_version"
+
+    // LiveData
+        def lifecycle_version = "2.2.0"
+        
+        // ViewModel
+        implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
+        // LiveData
+        implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+        // Coroutines
+        implementation "androidx.work:work-runtime-ktx:2.4.0"
+
 
 }

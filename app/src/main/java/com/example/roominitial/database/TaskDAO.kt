@@ -14,7 +14,7 @@ interface TaskDAO {
     fun insertLotOf (listObj: List<TaskAPP>)          //Varios Objetos
 
     @Update
-    fun updateOne(obj: TaskAPP)
+    suspend fun updateOne(obj: TaskAPP)
 
     @Delete
     fun deleteOne (obj: TaskAPP)
@@ -23,7 +23,7 @@ interface TaskDAO {
     fun getAllObj(): LiveData <List<TaskAPP>>  //     Antes de LiveData: fun getAllObj(): List<TaskAPP>
 
     @Query("SELECT * FROM table_App WHERE id=:mId")
-    fun getOneObj(mId: Int): TaskAPP
+    fun getOneObj(mId: Int): LiveData<TaskAPP>
 
     @Query("DELETE FROM table_App")
     suspend fun deleteAll()  //TaskAPP

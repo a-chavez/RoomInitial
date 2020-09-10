@@ -16,4 +16,14 @@ class TaskRepo (private val mTaskDAO: TaskDAO){
         mTaskDAO.deleteAll()
     }
 
+    //Busca por ID y trae el objeto envuelto en LiveData
+    fun getOneObjbyID(id: Int) : LiveData<TaskAPP> {
+        return mTaskDAO.getOneObj(id)
+    }
+
+    //actualiza el mismo ID
+    suspend fun updateTask (mTask: TaskAPP){
+        mTaskDAO.updateOne(mTask)
+    }
+
 }

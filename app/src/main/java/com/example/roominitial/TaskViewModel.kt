@@ -14,11 +14,11 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) { 
     private val mRepository: TaskRepo       //representacion del repositorio solo aca adentro (por eso es private)
     val mAllTask: LiveData<List<TaskAPP>>
 
+
     init{        // palabra reservada para inicializar cosas
         val mTaskDao = TaskDB.getDataBase(application).getObjDao()
         mRepository = TaskRepo(mTaskDao)
         mAllTask = mRepository.mListAllObj
-
     }
 
     fun insertTask (mTask: TaskAPP) = viewModelScope.launch {    // Asi se implementa la corrutina
@@ -29,5 +29,13 @@ class TaskViewModel(application: Application) : AndroidViewModel(application) { 
         mRepository.deleteAll()
     }
 
+    fun getOneTaskByID(id:Int) : LiveData<TaskAPP> {
+        return mRepository.getOneObjbyID(id)
+    }
+
+    //Este metodo hace update sin suspended
+    fun updateTask(mTask: TaskAPP) = viewModelScope.launch {
+        mRepository.updateTask(mTask)
+    }
 
 }
